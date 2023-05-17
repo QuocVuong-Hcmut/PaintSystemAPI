@@ -18,7 +18,6 @@ let getAllFinishedProduct = async (req, res) => {
     console.log(startTime)
     console.log(endTime)
     try{
-       // let listAllFinishedProduct = await db.FinishedProduct.findAll();
         let listFinishedProduct= [];
         let listAllFinishedProduct = await db.FinishedProduct.findAll({
             where:{
@@ -27,12 +26,6 @@ let getAllFinishedProduct = async (req, res) => {
                 }
             }
         });
-        // for (const item of listAllFinishedProduct) {
-        //     console.log("date", item.dateTime);
-        //     let DateTime = new Date(item.dateTime);
-        //     if(DateTime >= starttime && DateTime <= endTime)
-        //     listFinishedProduct.push(item);
-        // }
         return res.status(200).json(listAllFinishedProduct);
     }catch(e){
         return res.status(500).json(e)

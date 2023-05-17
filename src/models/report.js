@@ -14,9 +14,11 @@ module.exports = (sequelize, DataTypes) => {
   Report.init(
     {
       IdProduct: DataTypes.STRING,
-      Number: DataTypes.INTEGER,
-      ProductError: DataTypes.FLOAT,
-      StaffId: DataTypes.STRING,
+      Quantity: DataTypes.INTEGER,
+      ProductError: DataTypes.INTEGER,
+      RunTime: DataTypes.FLOAT,
+      ScheduleTime: DataTypes.FLOAT,
+      UserId: DataTypes.STRING,
       DateTime: DataTypes.DATE,
     },
     {

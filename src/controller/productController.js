@@ -52,6 +52,22 @@ let deleteProduct = async (req, res) => {
     });
     return res.status(200).json("success");
   } catch (e) {
+    throw new Error("kkk");
+  }
+};
+let pageProduct = async (req, res) => {
+  try {
+    const page = req.query.page * 1;
+    const pagesize = req.query.pagesize * 1;
+
+    const offset = page * pagesize;
+    const limit = pagesize;
+    const data = await db.Product.findAndCountAll({
+      offset,
+      limit,
+    });
+    return res.status(200).json(data);
+  } catch (e) {
     return res.status(500).json(e);
   }
 };
@@ -61,4 +77,5 @@ export default {
   updateProduct,
   createProduct,
   deleteProduct,
+  pageProduct,
 };

@@ -2,11 +2,6 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    // idProduct: DataTypes.STRING,
-    // Number: DataTypes.INT,
-    // ProductError: DataTypes.FLOAT,
-    // StaffId: DataTypes.STRING,
-    // dateTime: DataTypes.DATE
     await queryInterface.createTable("Reports", {
       id: {
         allowNull: false,
@@ -14,16 +9,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      Quantity: {
+        type: Sequelize.INTEGER,
+      },
       IdProduct: {
         type: Sequelize.STRING,
       },
-      Number: {
+      ProductError: {
         type: Sequelize.INTEGER,
       },
-      ProductError: {
+      RunTime: {
         type: Sequelize.FLOAT,
       },
-      StaffId: {
+      ScheduleTime: {
+        type: Sequelize.FLOAT,
+      },
+      UserId: {
         type: Sequelize.STRING,
       },
       DateTime: {

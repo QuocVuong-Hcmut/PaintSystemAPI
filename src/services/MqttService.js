@@ -3,18 +3,26 @@ import db from "../models/index.js";
 let client = null;
 function connect() {
   client = mqtt.connect("mqtt://broker.hivemq.com");
+  client.on("message", async (topic, payload) => {
+    console.log(payload.toString());
+    console.log(topic);
+    switch (topic) {
+      case "BK/PaintSystem/CompleteMessage/toWeb":
+        const FinishedProduct = JSON.parse(payload.toString());
+        await db.FinishedProduct.create(FinishedProduct);
+        break;
+      case "BK/PaintSystem/UaMessage/toWeb":
+        let Data = JSON.parse(payload.toString());
+
+        if (Data.Name === "alarm") {
+          const AlarmPoint = { NameAlarm: Data.Value, Status: false };
+          await db.AlarmPoint.create(AlarmPoint);
+        }
+        break;
+    }
+  });
 }
 function subscribe(topic) {
   client.subscribe(topic);
-  client.on("message", async (topic, payload) => {
-    switch (topic) {
-      case "BK/PaintSystem/Configuration/toWeb":
-        console.log(payload.toString());
-        break;
-      //await db.FinishedProduct.create(JSON.parse(payload.toString()))
-      case "BK/PaintSystem/UaMessage/toWeb":
-        console.log(payload.toString());
-    }
-  });
 }
 export default { connect, subscribe };

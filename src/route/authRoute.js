@@ -15,7 +15,7 @@ const routes = (app) => {
     controller.handleRefreshToken
   );
   route.put("/user/update/:id", controller.handleUpdate);
-  route.get("/user/all", verifyAccessToken, controller.getAllUser);
+  route.get("/user/all", controller.getAllUser);
   route.get("/user/page", controller.getPageUser);
   route.post("/user/:id", controller.deleteUser);
   return app.use("/auth", route);

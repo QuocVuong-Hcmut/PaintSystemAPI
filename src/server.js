@@ -28,7 +28,8 @@ process.env.UV_THREADPOOL_SIZE = OS.cpus().length - 3;
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin:
+      "https://5cdd-2405-4802-9057-37a0-e1b3-5865-6eff-3a46.ngrok-free.app",
     secure: false,
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
@@ -98,7 +99,7 @@ app.get(
     // Successful authentication, redirect home.
     console.log(res.user);
     console.log("re");
-    res.redirect("http://localhost:3000/login");
+    res.redirect("http://localhost:3000/");
   }
 );
 

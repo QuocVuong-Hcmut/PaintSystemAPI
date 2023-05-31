@@ -15,7 +15,11 @@ function connect() {
         let Data = JSON.parse(payload.toString());
 
         if (Data.Name === "alarm") {
-          const AlarmPoint = { NameAlarm: Data.Value, Status: false };
+          const AlarmPoint = {
+            NameAlarm: Data.Value,
+            Status: false,
+            DateTime: new Date(),
+          };
           await db.AlarmPoint.create(AlarmPoint);
         }
         break;

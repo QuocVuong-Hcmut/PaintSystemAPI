@@ -34,7 +34,7 @@ let getAllFinishedProduct = async (req, res) => {
   let getFinishedProductByIdProduct = async (req, res) => {
     try{
         console.log( req.params.idproduct)
-        const Alarm = await db.FinishedProduct.findOne({ where: { idProduct: req.params.idproduct } })
+        const Alarm = await db.FinishedProduct.findOne({ where: { IdProduct: req.params.idproduct } })
         if(!Alarm) return res.status(404).json("Not Found!")
         return res.status(200).json(Alarm);
     }catch(e){

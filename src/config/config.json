@@ -17,7 +17,7 @@
     "port": "49682",
     "dialect": "mssql"
   },
-  "development": {
+  "production": {
     "username": "postgres",
     "password": "A@quocvuong24621",
     "database": "postgres",

@@ -2,7 +2,7 @@
   "name": "restfulapi",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
+  "type": "commonjs",
   "main": "src/server.js",
   "engines": {
     "node": "14.x"

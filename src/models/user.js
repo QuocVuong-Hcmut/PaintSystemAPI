@@ -20,11 +20,13 @@ module.exports = (sequelize, DataTypes) => {
       Password: DataTypes.STRING,
       PhoneNumber: DataTypes.INTEGER,
       Admin: DataTypes.BOOLEAN,
-      DateTime: DataTypes.DATE,
+      DateTime: DataTypes.DATE, // dc rồi đó cô nươngg
     },
     {
       sequelize,
       modelName: "User",
+      tableName: "Users",
+      timestamps: false,
     }
   );
   return User;

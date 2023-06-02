@@ -28,8 +28,10 @@ process.env.UV_THREADPOOL_SIZE = OS.cpus().length - 3;
 
 app.use(
   cors({
-    origin:
-      "https://5cdd-2405-4802-9057-37a0-e1b3-5865-6eff-3a46.ngrok-free.app",
+    origin: [
+      "http://localhost:3000",
+      "webscada-paintsystems-ddu12vwui-quocvuong-hcmut.vercel.app",
+    ],
     secure: false,
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
@@ -93,13 +95,13 @@ app.get(
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:3001/login",
+    failureRedirect: "http://localhost:3000/",
   }),
   function (req, res) {
     // Successful authentication, redirect home.
     console.log(res.user);
     console.log("re");
-    res.redirect("http://localhost:3000/");
+    res.redirect("http://localhost:3000/setting");
   }
 );
 
@@ -126,11 +128,7 @@ passport.deserializeUser(function (user, done) {
   console.log("In deserializeUser");
   done(null, user);
 });
-app.use((req, res, next) => {
-  return next(
-    createHttpError.NotFound(`Not Found Router ${req.originalUrl} on sever`)
-  );
-});
+
 app.use((err, req, res, next) => {
   console.log("Lôi", err);
   return res.status(err.status || 500).json({

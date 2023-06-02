@@ -1,5 +1,5 @@
 {
-  "development": {
+  "pro": {
     "username": "root",
     "password": "123456",
     "database": "scada",
@@ -17,11 +17,25 @@
     "port": "49682",
     "dialect": "mssql"
   },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "localhost",
-    "dialect": "mysql"
+  "development": {
+    "username": "postgres",
+    "password": "A@quocvuong24621",
+    "database": "postgres",
+    "host": "db.pmollnpdohrmvsdocroq.supabase.co",
+    "port": 5432,
+    "dialect": "postgres",
+    "define": {
+      "freezeTableName": true
+    },
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    },
+    "timezone": "+07:00",
+    "query": {
+      "raw": true
+    }
   }
 }

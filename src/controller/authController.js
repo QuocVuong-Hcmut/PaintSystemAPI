@@ -16,16 +16,18 @@ let KeyRefreshToken = process.env.KeyRefreshToken;
 let saltRound = process.env.SALTROUND;
 let handleLogin = async (req, res, next) => {
   try {
+    console.log(1);
     //SendEmail();
     if (!req.body.UserName || !req.body.Password)
       throw createHttpError.BadRequest("Password or Username is empty");
     let user = await db.User.findOne({
-      where: { userName: req.body.UserName },
+      where: { UserName: req.body.UserName },
     });
     console.log("user", user);
     if (!user) {
       throw createHttpError.NotFound("Username is'n exist!");
     } else {
+      console.log(req.body.Password, user.Password);
       if (req.body.Password != user.Password)
         throw createHttpError.NotFound("Password wrong!");
 
@@ -59,7 +61,7 @@ let handleLogin = async (req, res, next) => {
         httpOnly: true,
       });
 
-      let { Password, ...others } = user.dataValues;
+      let { Password, ...others } = user;
       return res.status(200).json({
         ...others,
         accessToken,
@@ -140,7 +142,7 @@ let getAllUser = async (req, res) => {
     if (!listUser) return res.status(404).json("Not Found!");
     return res.status(200).json(listUser);
   } catch (e) {
-    return res.status(500).json("Looix adjhcb");
+    return res.status(500).json("Lỗi server");
   }
 };
 let getPageUser = async (req, res) => {

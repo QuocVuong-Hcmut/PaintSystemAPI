@@ -19,9 +19,12 @@ import hpp from "hpp";
 const LocalStrategy = require("passport-local").Strategy;
 import session from "express-session";
 require("express-async-errors");
+// const GOOGLE_CLIENT_ID =
+//   "32668285401-7oi17oag7kj0dg3ht8ebjdrarc5gbddv.apps.googleusercontent.com";
+// const GOOGLE_CLIENT_SECRET = "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";
 const GOOGLE_CLIENT_ID =
-  "32668285401-7oi17oag7kj0dg3ht8ebjdrarc5gbddv.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET = "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";
+  "959866152117-dilpi6vqt8e1rnkgi193uavjluna36t7.apps.googleusercontent.com";
+const GOOGLE_CLIENT_SECRET = "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";
 var GoogleStrategy = require("passport-google-oauth20").Strategy;
 dotenv.config();
 process.env.UV_THREADPOOL_SIZE = OS.cpus().length - 3;
@@ -95,13 +98,16 @@ app.get(
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:3000/",
+    failureRedirect:
+      "webscada-paintsystems-ddu12vwui-quocvuong-hcmut.vercel.app/",
   }),
   function (req, res) {
     // Successful authentication, redirect home.
     console.log(res.user);
     console.log("re");
-    res.redirect("http://localhost:3000/setting");
+    res.redirect(
+      "webscada-paintsystems-ddu12vwui-quocvuong-hcmut.vercel.app/setting"
+    );
   }
 );
 

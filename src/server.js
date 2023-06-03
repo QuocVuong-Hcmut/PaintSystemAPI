@@ -99,7 +99,7 @@ app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
     failureRedirect:
-      "webscada-paintsystems-ddu12vwui-quocvuong-hcmut.vercel.app/",
+      "webscada-paintsystems-ddu12vwui-quocvuong-hcmut.vercel.app",
   }),
   function (req, res) {
     // Successful authentication, redirect home.

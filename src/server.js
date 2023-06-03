@@ -31,10 +31,8 @@ process.env.UV_THREADPOOL_SIZE = OS.cpus().length - 3;
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://webscada-paintsystems.vercel.app",
-    ],
+    origin: "https://webscada-paintsystems.vercel.app",
+
     secure: false,
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,

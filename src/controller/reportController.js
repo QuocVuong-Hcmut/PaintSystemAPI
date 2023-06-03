@@ -139,9 +139,6 @@ let getOEE = async (req, res) => {
       QuantityStandard /
       (QuantityError + QuantityStandard)
     ).toFixed(3);
-    console.log("QuantityStandard", QuantityStandard);
-    console.log("QuantityError", QuantityError);
-    console.log("Quality", Quality);
     let Performance = (RunTime / PerformanceTime).toFixed(4);
     let OEE = (Availability * Quality * Performance * 100).toFixed(2);
     Availability *= 100;

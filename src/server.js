@@ -33,7 +33,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "webscada-paintsystems-ddu12vwui-quocvuong-hcmut.vercel.app",
+      "https://webscada-paintsystems.vercel.app/",
     ],
     secure: false,
     credentials: true, //access-control-allow-credentials:true
